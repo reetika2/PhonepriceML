@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ML Mobile price prediction
+    </title>
+    <style>
+        body {
+            font-family: 'Arimo', sans-serif;
+            background-image: url('./static/50e0e-16572903750942-1920.png');
+            background-color: aquamarine;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .login {
+            background-color: rgba(227, 227, 227, 0.8);
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .login h1 {
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+            background:transparent;
+            backdrop-filter: blur();
+
+            font-size: 36px;
+            color: #333;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+
+        .btn {
+            background-color: #4b7eb5;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .prediction {
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+        <h2>To Predict Mobile Price</h2>
+        <form action="{{ url_for('predict') }}" method="post">
+            <input type="text" name="RAM" placeholder="RAM" required="required" />
+            <input type="text" name="ROM/Storage" placeholder="ROM/Storage" required="required" />
+            <input type="text" name="Back/Rare Camera" placeholder="Back/Rare Camera" required="required" />
+            <input type="text" name="Front Camera" placeholder="Front Camera" required="required" />
+            <input type="text" name="Battery" placeholder="Battery" required="required" />
+            <button type="submit" class="btn">Predict</button>
+        </form>
+        <div class="prediction">
+            {{ prediction_text }}
+        </div>
+    </div>
+</body>
+</html>
+
